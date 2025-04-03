@@ -5,8 +5,7 @@ import bcrypt from "bcryptjs";
 export const protectRoute=async(req,res,next)=>{
     try{
          const token=req.cookies.jwt;
-         if(!token)
-         {
+         if(!token) {
             return res.status(401).json({message:"You are not authorized"});
          }
          const decoded=jwt.verify(token,process.env.JWT_SECRET);
